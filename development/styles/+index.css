@@ -1,1 +1,39 @@
+.expoforum {
+    height: 100vh;
+    background: center / cover no-repeat url("../image/bgc.png");
+}
 
+.expoforum__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 5px;
+}
+
+.expoforum .wrapper {
+    padding: 35px 180px;
+}
+
+.expoforum__logo {
+    display: inline-block;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.expoforum__navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigation__link {
+    padding: 10px 10px 10px 0;
+    font-size: 16px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.navigation__link:hover {
+    color: #000;
+}
