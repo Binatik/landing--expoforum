@@ -44,33 +44,44 @@
     color: #000;
 }
 
-.expoforum__bar { 
+.expoforum__bar {
+    /*ff*/
+}
+
+.expoforum__search {
+    padding: 5px 5px 5px 0;
     cursor: pointer;
 }
 
 .expoforum__search-input {
-    padding: 5px;
-    font-size: 18px;
+    width: 0;
     opacity: 0;
-    overflow: hidden;
-    background-color: rgba(255, 255, 255, 0.5);
+    visibility: hidden;
+    font-size: 16px;
+    background-color: #FFFFFF;
+    border-radius: 3px;
     transition: 0.2s;
 }
 
-.expoforum__bar:hover .expoforum__search-input {
+.expoforum__search:hover .expoforum__search-input {
+    width: 200px;
+    padding: 5px;
     opacity: 1;
-    overflow: initial;
+    visibility: initial;
 }
 
 .expoforum__search-svg {
-    margin: 0 0 0 20px;
     fill: #FFFFFF;
     transition: 0.2s;
 }
 
-.expoforum__bar:hover .expoforum__search-svg {
-    fill: #000;
+.expoforum__search:hover .expoforum__search-svg {
+    margin: 0 0 0 15px;
+    stroke-width: 20;
+    stroke: #FFC41E;
+    fill: #FFC41E;
 }
+
 
 @media (max-width: 992px){
     .expoforum .wrapper {
