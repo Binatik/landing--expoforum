@@ -1,2 +1,3 @@
+-include('+resize.js')
 -include('+search.js')
 -include('+burger.js')
