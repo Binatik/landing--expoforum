@@ -1,4 +1,5 @@
 .expoforum {
+    position: relative;
     height: 100vh;
     background: center / cover no-repeat url("../image/bgc.webp");
 }
@@ -8,10 +9,51 @@
     background-color: transparent;
     width: 100%;
     height: 100%;
+    transition: 0.4s;
 }
 
 .mobile__burger {
+    cursor: pointer;
     position: fixed;
+    left: 0;
+    top: 0;
+    user-select: none;
+    z-index: -1;
+}
+
+.mobile__burger_line {
+    fill:none;
+    transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+    stroke: #fff;
+    stroke-width:5.5;
+    stroke-linecap:round;
+}
+
+.burger .top {
+    stroke-dasharray: 40 160;
+}
+.burger .middle {
+    stroke-dasharray: 40 142;
+    transform-origin: 50%;
+    transition: transform 400ms;
+}
+.burger .bottom {
+    stroke-dasharray: 40 85;
+    transform-origin: 50%;
+    transition: transform 400ms, stroke-dashoffset 400ms;
+}
+.burger_active .top {
+    stroke-dashoffset: -64px;
+}
+.burger_active .middle {
+    transform: rotate(90deg);
+}
+.burger_active .bottom {
+    stroke-dashoffset: -64px;
+}
+
+.mobile__burger-rotate {
+    transform: rotate(180deg);
 }
 
 .expoforum__search {
@@ -121,6 +163,15 @@
         overflow: scroll;
         max-width: 360px;
         background-color: #F6404F;
+        transform: translate(0, 0);
+    }
+
+    .mobile__menu_active {
+       transform: translate(-1000%, 0);
+    }
+
+    .mobile__burger {
+        z-index: 1;
     }
 
     .expoforum__top {
