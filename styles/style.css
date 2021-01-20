@@ -48,6 +48,23 @@ body {
     background: center / cover no-repeat url("../image/bgc.png");
 }
 
+.expoforum__search-input {
+    width: 0;
+    visibility: hidden;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #FFFFFF;
+    border-radius: 3px;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+}
+
+.expoforum__search-input_active {
+    width: 100%;
+    visibility: initial;
+}
+
 .expoforum__top {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -75,6 +92,7 @@ body {
 }
 
 .expoforum__navigation {
+    padding: 0 15px 0 0;
   /*ff */
 }
 
@@ -97,45 +115,30 @@ body {
 }
 
 .expoforum__bar {
-    /*ff*/
-}
-
-.expoforum__search {
-    padding: 5px 5px 5px 0;
-    cursor: pointer;
-}
-
-.expoforum__search-input {
-    width: 0;
-    opacity: 0;
-    visibility: hidden;
-    font-size: 16px;
-    background-color: #FFFFFF;
-    border-radius: 3px;
-    -webkit-transition: 0.2s;
-    -o-transition: 0.2s;
-    transition: 0.2s;
-}
-
-.expoforum__search:hover .expoforum__search-input {
-    width: 200px;
-    padding: 5px;
-    opacity: 1;
-    visibility: initial;
 }
 
 .expoforum__search-svg {
+    cursor: pointer;
+    margin: 0 70px 0 0;
     fill: #FFFFFF;
     -webkit-transition: 0.2s;
     -o-transition: 0.2s;
     transition: 0.2s;
 }
 
-.expoforum__search:hover .expoforum__search-svg {
-    margin: 0 0 0 15px;
+.expoforum__search-svg_active {
     stroke-width: 20;
     stroke: #FFC41E;
     fill: #FFC41E;
+}
+
+.expoforum__language-svg {
+    margin: 0 11px 0 0;
+    fill: #FFFFFF;
+}
+
+.expoforum__language-text {
+    color: #fff;
 }
 
 
