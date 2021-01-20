@@ -4,8 +4,12 @@
     background: center / cover no-repeat url("../image/bgc.webp");
 }
 
+.expoforum .wrapper {
+    padding: 35px 180px 33px 180px;
+    border-bottom: 1px solid #fff;
+}
+
 .mobile__menu {
-    position: fixed;
     background-color: transparent;
     width: 100%;
     height: 100%;
@@ -89,17 +93,12 @@
 }
 
 .expoforum__top {
+    width: 100%;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
-    margin: 5px;
     z-index: 0;
-}
-
-.expoforum .wrapper {
-    padding: 35px 180px;
 }
 
 .expoforum__logo {
@@ -110,6 +109,7 @@
 }
 
 .expoforum__navigation {
+    justify-content: space-between;
     padding: 0 15px 0 0;
   /*ff */
 }
@@ -121,18 +121,17 @@
     color: #FFFFFF;
 }
 
-.navigation__link:last-child {
-    margin: 10px 0 10px 0;
-    color: #FFFFFF;
-}
-
 .navigation__link:hover {
     color: #000;
 }
 
+.expoforum__bar {
+    height: 100%;
+}
+
 .expoforum__search-svg {
     cursor: pointer;
-    margin: 0 70px 0 0;
+    margin: 0 70px 20px 0;
     fill: #FFFFFF;
     transition: 0.2s;
 }
@@ -154,20 +153,21 @@
 
 @media (max-width: 992px) {
     .expoforum .wrapper {
-        padding: 35px 15px;
+        padding: 35px 15px 33px 15px;
     }
 }
 
 @media (max-width: 768px) {
     .mobile__menu {
+        position: fixed;
         overflow: scroll;
         max-width: 360px;
         background-color: #F6404F;
-        transform: translate(0, 0);
+        transform: translate(-1000%, 0);
     }
 
     .mobile__menu_active {
-       transform: translate(-1000%, 0);
+        transform: translate(0, 0);
     }
 
     .mobile__burger {
