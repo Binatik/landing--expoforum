@@ -1,1 +1,1 @@
--include('+test.js') 
+-include('+search.js')

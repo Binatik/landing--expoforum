@@ -1,9 +1,10 @@
 const formats = '{img,svg,webp,jpg,png}';
+const formatFonts = '{woff,woff2,css}';
 //Получаем пути для чтения  объектов.
 const getPaths = (root) => ({
     html: [`${root}/*.html`, `!${root}/+*.html`],
     image: `${root}/image/**/*.${formats}`,
-    fonts: `${root}/fonts/*.ttf`,
+    fonts: `${root}/fonts/*.${formatFonts}`,
     styles: [`${root}/styles/*.css`, `!${root}/styles/+*.css`],
     scripts: [`${root}/scripts/*.js`, `!${root}/scripts/+*.js`],
 
