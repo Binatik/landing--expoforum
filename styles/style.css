@@ -46,7 +46,7 @@ body {
 
 .expoforum {
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
     background: center / cover no-repeat url("../image/bgc.webp");
 }
 
@@ -167,7 +167,6 @@ body {
 
 .expoforum__top {
     width: 100%;
-    position: relative;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -207,6 +206,12 @@ body {
 }
 
 .expoforum__bar {
+    margin: 18px 0 0 0;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
     height: 100%;
 }
 
@@ -241,6 +246,41 @@ body {
     color: #fff;
 }
 
+.expoforum__middle {
+}
+
+.expoforum__complex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 100vh;
+}
+
+.expoforum__complex .wrapper {
+    padding: 0 403px;
+    border: none;
+}
+
+.expoforum__title {
+    font-weight: bold;
+    font-size: 64px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.expoforum__text {
+    max-width: 370px;
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
 @media (max-width: 992px) {
     .expoforum .wrapper {
         padding: 35px 15px 33px 15px;
@@ -250,12 +290,13 @@ body {
 @media (max-width: 768px) {
     .mobile__menu {
         position: fixed;
-        overflow: scroll;
+        overflow: auto;
         max-width: 360px;
         background-color: #F6404F;
         -webkit-transform: translate(-1000%, 0);
             -ms-transform: translate(-1000%, 0);
                 transform: translate(-1000%, 0);
+        z-index: 3;
     }
 
     .mobile__menu_active {
@@ -303,6 +344,9 @@ body {
     }
 
     .expoforum__bar {
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
             -ms-flex-direction: column;
@@ -314,5 +358,9 @@ body {
 
     .expoforum__search-svg {
         margin: 0 0 15px 0;
+    }
+
+    .expoforum__language {
+        margin: 0;
     }
 }
