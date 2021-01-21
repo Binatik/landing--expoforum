@@ -1,4 +1,3 @@
-/* throttle */
 (function() {
     const throttle = function(type, name, obj) {
         obj = obj || window;
@@ -17,30 +16,37 @@
     throttle("resize", "optimizedResize");
 })();
 
-function throttleFn(fn, delay) {
-    let lastCall = 0;
 
-    return function(...args) {
-        const now = Date.now();
+document.addEventListener("DOMContentLoaded", () => {
+    let heightNav = document.querySelector('.expoforum__navigation').offsetHeight;
+    let bar = document.querySelector('.expoforum__bar');
+    bar.setAttribute('style', `height: ${heightNav}px`);
 
-        if (now - lastCall < delay) {
-            return;
+    function debounce(fn, delay) {
+        let timerId;
+
+        return function(...args) {
+            if (timerId) {
+                clearTimeout(timerId);
+            }
+
+            timerId = setTimeout(() => {
+                fn.apply(this, args);
+                timerId = null;
+            }, delay);
+        };
+    }
+
+    window.addEventListener('optimizedResize', debounce(() => {
+        heightNav = document.querySelector('.expoforum__navigation').offsetHeight;
+        bar = document.querySelector('.expoforum__bar');
+        if (window.innerWidth > 768) {
+            console.log('test');
+            bar.setAttribute('style', `height: ${heightNav}px`);
         }
 
-        lastCall = now;
-        fn.apply(this, args);
-    };
-}
-
-window.addEventListener("optimizedResize", (event) => {
-    const heightNav = document.querySelector('.expoforum__navigation').offsetHeight;
-    const bar = document.querySelector('.expoforum__bar');
-    if (window.innerWidth > 768) {
-        bar.setAttribute('style', `height: ${heightNav}px`);
-        console.log(heightNav);
-    }
-
-    else {
-        bar.setAttribute('style', `height: 100%`);
-    }
-})
+        else {
+            bar.setAttribute('style', `height: 100%`);
+        }
+    }, 100));
+});
