@@ -126,6 +126,9 @@
 }
 
 .expoforum__bar {
+    margin: 18px 0 0 0;
+    align-items: flex-start;
+    flex-wrap: nowrap;
     height: 100%;
 }
 
@@ -203,11 +206,16 @@
     }
 
     .expoforum__bar {
+        align-items: center;
         flex-direction: column;
         justify-content: space-between;
     }
 
     .expoforum__search-svg {
         margin: 0 0 15px 0;
+    }
+
+    .expoforum__language {
+        margin: 0;
     }
 }
