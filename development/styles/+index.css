@@ -1,6 +1,6 @@
 .expoforum {
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
     background: center / cover no-repeat url("../image/bgc.webp");
 }
 
@@ -94,7 +94,6 @@
 
 .expoforum__top {
     width: 100%;
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -161,6 +160,34 @@
     color: #fff;
 }
 
+.expoforum__middle {
+}
+
+.expoforum__complex {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.expoforum__complex .wrapper {
+    padding: 0 403px;
+    border: none;
+}
+
+.expoforum__title {
+    font-weight: bold;
+    font-size: 64px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.expoforum__text {
+    max-width: 370px;
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
 @media (max-width: 992px) {
     .expoforum .wrapper {
         padding: 35px 15px 33px 15px;
@@ -170,10 +197,11 @@
 @media (max-width: 768px) {
     .mobile__menu {
         position: fixed;
-        overflow: scroll;
+        overflow: auto;
         max-width: 360px;
         background-color: #F6404F;
         transform: translate(-1000%, 0);
+        z-index: 3;
     }
 
     .mobile__menu_active {
