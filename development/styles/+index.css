@@ -131,7 +131,6 @@
 
 .expoforum__search-svg {
     cursor: pointer;
-    margin: 0 70px 20px 0;
     fill: #FFFFFF;
     transition: 0.2s;
 }
@@ -140,6 +139,14 @@
     stroke-width: 20;
     stroke: #FFC41E;
     fill: #FFC41E;
+}
+
+.expoforum__language {
+    margin: 0 0 0 70px;
+}
+
+.expoforum__size {
+    margin: 0;
 }
 
 .expoforum__language-svg {
