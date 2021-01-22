@@ -1,4 +1,39 @@
-let heightNav = document.querySelector('.expoforum__navigation').offsetHeight;
+let pageLanguage = 'Russian'; //This variable should be the highest of all;
+
+function Dropdown() {
+    const language = document.querySelector('.language');
+    let dropdownText = document.querySelector('.language__dropdown-text');
+    const dropdownLinks = document.querySelectorAll('.language__dropdown-link');
+
+    if (!localStorage.getItem('languageMenu')) {
+        dropdownText.textContent = pageLanguage;
+    }
+    else {
+        dropdownText.textContent = localStorage.getItem('languageMenu');
+        console.log(localStorage.getItem('languageData'));
+    }
+
+    language.children[0].addEventListener('click', () => {
+        language.children[0].classList.toggle('language__dropdown-svg_active');
+        language.children[1].classList.toggle('language__dropdown-submenu_active');
+    })
+
+    for(const dropdownLink of dropdownLinks) {
+        if(dropdownText.textContent === dropdownLink.textContent) {
+            dropdownLink.remove();
+        }
+
+        dropdownLink.addEventListener('click', (event) => {
+            dropdownText.textContent = event.target.textContent;
+            localStorage.setItem('languageMenu', event.target.textContent);
+            localStorage.setItem('languageData', event.target.dataset.languageId);
+            location.reload();
+        })
+    }
+
+}
+Dropdown();
+const nav = document.querySelector('.expoforum__navigation');
 let bar = document.querySelector('.expoforum__bar');
 
 (function() {
@@ -20,7 +55,7 @@ let bar = document.querySelector('.expoforum__bar');
 })();
 
 function changeHeightBar() {
-    heightNav = document.querySelector('.expoforum__navigation').offsetHeight;
+    const heightNav = nav.offsetHeight;
     bar = document.querySelector('.expoforum__bar');
     if (window.innerWidth > 768) {
         bar.setAttribute('style', `height: ${heightNav}px`);
@@ -50,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener('optimizedResize', debounce(() => {
         changeHeightBar();
-    }, 100));
+    }, 300));
 });
 function Search() {
     const searchContainer = document.querySelector('.expoforum__search');

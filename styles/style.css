@@ -18,7 +18,7 @@ body {
 }
 
 .wrapper {
-    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -44,6 +44,23 @@ body {
         flex-wrap: wrap;
 }
 
+.list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.language__dropdown-submenu::-webkit-scrollbar {
+    width: 3px;
+}
+
+.language__dropdown-submenu::-webkit-scrollbar-track {
+    background: #000;
+}
+
+.language__dropdown-submenu::-webkit-scrollbar-thumb {
+    background: #f6404f;
+}
 .expoforum {
     position: relative;
     min-height: 100vh;
@@ -176,6 +193,7 @@ body {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    padding: 0 10px;
     z-index: 0;
 }
 
@@ -187,9 +205,9 @@ body {
 }
 
 .expoforum__navigation {
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -206,10 +224,11 @@ body {
 }
 
 .navigation__link:hover {
-    color: #000;
+    color: #2378FC;
 }
 
 .expoforum__bar {
+    position: relative;
     margin: 18px 0 0 0;
     -webkit-box-align: start;
         -ms-flex-align: start;
@@ -217,14 +236,23 @@ body {
     -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
     height: 100%;
+    z-index: 1;
 }
 
 .expoforum__search-svg {
     cursor: pointer;
+    position: static;
+    z-index: 3;
     fill: #FFFFFF;
     -webkit-transition: 0.2s;
     -o-transition: 0.2s;
     transition: 0.2s;
+}
+
+.expoforum__search-svg:hover {
+    stroke-width: 20;
+    stroke: #2378FC;
+    fill: #2378FC;
 }
 
 .expoforum__search-svg_active {
@@ -237,20 +265,81 @@ body {
     margin: 0 0 0 70px;
 }
 
-.expoforum__size {
-    margin: 0;
+.language__dropdown {
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
 }
 
-.expoforum__language-svg {
+.language__dropdown-svg {
+    position: static;
     margin: 0 11px 0 0;
     fill: #FFFFFF;
+    z-index: 3;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
 }
 
-.expoforum__language-text {
-    color: #fff;
+.language__dropdown:hover .language__dropdown-svg {
+    stroke-width: 20;
+    stroke: #2378FC;
+    fill: #2378FC;
 }
 
-.expoforum__middle {
+.language__dropdown-svg_active {
+    stroke-width: 20;
+    stroke: #FFC41E;
+    fill: #FFC41E;
+}
+
+.language__dropdown-text {
+    position: static;
+    z-index: 3;
+}
+
+.language__dropdown-submenu {
+    overflow: auto;
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 5px 10px;
+    left: 0;
+    top: 30px;
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    background-color: #2378FC;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+}
+
+.language__dropdown-submenu_active {
+    visibility: initial;
+    opacity: 1;
+}
+
+.language__dropdown-link {
+    opacity: 0.3;
+    margin: 10px 0 0 0;
+    font-size: 18px;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+}
+
+.language__dropdown-link:hover {
+    opacity: 1;
 }
 
 .expoforum__complex {
@@ -285,7 +374,7 @@ body {
     color: #FFFFFF;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
     .expoforum .wrapper {
         padding: 35px 15px 33px 15px;
     }
@@ -350,6 +439,8 @@ body {
     }
 
     .expoforum__bar {
+        width: 100%;
+        height: 100%;
         -webkit-box-align: center;
             -ms-flex-align: center;
                 align-items: center;
@@ -377,5 +468,9 @@ body {
     .expoforum__text {
         max-width: 370px;
         font-size: 20px;
+    }
+
+    .language__dropdown-submenu {
+        top: 60px;
     }
 }
