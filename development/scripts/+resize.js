@@ -1,4 +1,4 @@
-let heightNav = document.querySelector('.expoforum__navigation').offsetHeight;
+const nav = document.querySelector('.expoforum__navigation');
 let bar = document.querySelector('.expoforum__bar');
 
 (function() {
@@ -20,7 +20,7 @@ let bar = document.querySelector('.expoforum__bar');
 })();
 
 function changeHeightBar() {
-    heightNav = document.querySelector('.expoforum__navigation').offsetHeight;
+    const heightNav = nav.offsetHeight;
     bar = document.querySelector('.expoforum__bar');
     if (window.innerWidth > 768) {
         bar.setAttribute('style', `height: ${heightNav}px`);
@@ -50,5 +50,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener('optimizedResize', debounce(() => {
         changeHeightBar();
-    }, 100));
+    }, 300));
 });
