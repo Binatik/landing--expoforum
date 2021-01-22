@@ -1,0 +1,11 @@
+.language__dropdown-submenu::-webkit-scrollbar {
+    width: 3px;
+}
+
+.language__dropdown-submenu::-webkit-scrollbar-track {
+    background: #000;
+}
+
+.language__dropdown-submenu::-webkit-scrollbar-thumb {
+    background: #f6404f;
+}

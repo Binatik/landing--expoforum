@@ -34,4 +34,11 @@ body {
     flex-wrap: wrap;
 }
 
+.list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+@include('+scrollbar.css')
 @include('+index.css')
