@@ -40,4 +40,5 @@ body {
     list-style-type: none;
 }
 
+@include('+scrollbar.css')
 @include('+index.css')
