@@ -1,15 +1,84 @@
 const navigation = {
-    'russian':
-        ['О комплексе', 'О компании', 'Новости', 'Медиа-банк', 'Контакты'],
+    'russian': [
+        {
+            id: 1,
+            title: 'О комплексе',
+            link: '#'
+        },
+        {
+            id: 2,
+            title: 'О компании',
+            link: '#'
+        },
+        {
+            id: 3,
+            title: 'Новости',
+            link: '#'
+        },
+        {
+            id: 4,
+            title: 'Медиа-банк',
+            link: '#'
+        },
+        {
+            id: 5,
+            title: 'Контакты',
+            link: 'https://vk.com/id269791339'
+        }
+    ],
 
-    'english':
-        ['About complex', 'About company', 'News', 'Media Bank', 'Contacts']
+    'english': [
+        {
+            id: 1,
+            title: 'About complex',
+            link: '#'
+        },
+        {
+            id: 2,
+            title: 'About company',
+            link: '#'
+        },
+        {
+            id: 3,
+            title: 'News',
+            link: '#'
+        },
+        {
+            id: 4,
+            title: 'Media Bank',
+            link: '#'
+        },
+        {
+            id: 5,
+            title: 'Contacts',
+            link: 'https://vk.com/id269791339'
+        }
+    ]
+}
+
+const expoforum = {
+    'russian': 'ЭКСПОФОРУМ',
+    'english': 'EXPOFORUM'
+}
+
+const expoforumText = {
+    'russian': 'конгрессно-выставочный центр Санкт-Петербурга',
+    'english': 'St. Petersburg Convention and Exhibition Center'
 }
 
 let type = localStorage.getItem('languageData');
 const language = !type ? 'russian' : type;
 
 function setLocalLanguage(language, obj) {
+    if (language === 'russian') {
+        return obj[language];
+    }
+    else if (language === 'english') {
+        return obj[language];
+    }
+}
+
+function setLocalLanguageArr(language, obj) {
     if (language === 'russian') {
         return JSON.stringify(obj[language].map(el => el));
     }
@@ -18,6 +87,9 @@ function setLocalLanguage(language, obj) {
     }
 }
 
-localStorage.setItem('navigationList', setLocalLanguage(language, navigation));
+localStorage.setItem('expoforum', setLocalLanguage(language, expoforum));
+localStorage.setItem('expoforumText', setLocalLanguage(language, expoforumText));
+//ARR
+localStorage.setItem('navigationList', setLocalLanguageArr(language, navigation));
 
 
