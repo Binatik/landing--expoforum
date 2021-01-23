@@ -51,7 +51,7 @@ body {
 }
 
 .language__dropdown-submenu::-webkit-scrollbar {
-    width: 3px;
+    width: 0;
 }
 
 .language__dropdown-submenu::-webkit-scrollbar-track {
@@ -198,8 +198,10 @@ body {
 }
 
 .expoforum__logo {
+    -ms-flex-item-align: start;
+        align-self: flex-start;
     display: inline-block;
-    padding: 0 30px 0 0;
+    margin: 7px 30px 0 0;
     font-size: 32px;
     font-weight: 700;
 }
@@ -217,14 +219,13 @@ body {
 
 .navigation__link {
     margin: 10px 47px 10px 0;
-    width: 100px;
     font-size: 16px;
     text-align: left;
     color: #FFFFFF;
 }
 
 .navigation__link:hover {
-    color: #2378FC;
+    color: #222222;
 }
 
 .expoforum__bar {
@@ -251,8 +252,8 @@ body {
 
 .expoforum__search-svg:hover {
     stroke-width: 20;
-    stroke: #2378FC;
-    fill: #2378FC;
+    stroke: #222222;
+    fill: #222222;
 }
 
 .expoforum__search-svg_active {
@@ -282,8 +283,8 @@ body {
 
 .language__dropdown:hover .language__dropdown-svg {
     stroke-width: 20;
-    stroke: #2378FC;
-    fill: #2378FC;
+    stroke: #222222;
+    fill: #222222;
 }
 
 .language__dropdown-svg_active {
@@ -318,7 +319,9 @@ body {
     width: 100%;
     height: 100%;
     border-radius: 3px;
-    background-color: #2378FC;
+    background-color: #222222;
+    -webkit-box-shadow: 5px 4px 74px 42px rgba(34, 60, 80, 0.2);
+            box-shadow: 5px 4px 74px 42px rgba(34, 60, 80, 0.2);
     -webkit-transition: 0.2s;
     -o-transition: 0.2s;
     transition: 0.2s;
@@ -410,7 +413,9 @@ body {
     }
 
     .expoforum__logo {
-        padding: 0;
+        -ms-flex-item-align: center;
+            align-self: center;
+        margin: 0;
         -webkit-box-ordinal-group: 1;
             -ms-flex-order: 0;
                 order: 0;
@@ -471,6 +476,8 @@ body {
     }
 
     .language__dropdown-submenu {
+        position: absolute;
         top: 60px;
+        height: 50vh;
     }
 }

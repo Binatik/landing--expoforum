@@ -33,6 +33,38 @@ function Dropdown() {
 
 }
 Dropdown();
+const navigation = {
+    'russian':
+        ['О комплексе', 'О компании', 'Новости', 'Медиа-банк', 'Контакты'],
+
+    'english':
+        ['About complex', 'About company', 'News', 'Media Bank', 'Contacts']
+}
+
+let type = localStorage.getItem('languageData');
+const language = !type ? 'russian' : type;
+
+function setLocalLanguage(language, obj) {
+    if (language === 'russian') {
+        return JSON.stringify(obj[language].map(el => el));
+    }
+    else if (language === 'english') {
+        return JSON.stringify(obj[language].map(el => el));
+    }
+}
+
+localStorage.setItem('navigationList', setLocalLanguage(language, navigation));
+
+
+
+const navigationList = JSON.parse(localStorage.getItem('navigationList'));
+console.log(navigationList);
+const expoforumNavigation = document.querySelector('.expoforum__navigation');
+
+navigationList.forEach(title => {
+    expoforumNavigation.innerHTML += `<a class="navigation__link link" href="#">${title}</a>`
+})
+
 const nav = document.querySelector('.expoforum__navigation');
 let bar = document.querySelector('.expoforum__bar');
 
