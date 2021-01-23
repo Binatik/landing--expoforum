@@ -34,17 +34,86 @@ function Dropdown() {
 }
 Dropdown();
 const navigation = {
-    'russian':
-        ['О комплексе', 'О компании', 'Новости', 'Медиа-банк', 'Контакты'],
+    'russian': [
+        {
+            id: 1,
+            title: 'О комплексе',
+            link: '#'
+        },
+        {
+            id: 2,
+            title: 'О компании',
+            link: '#'
+        },
+        {
+            id: 3,
+            title: 'Новости',
+            link: '#'
+        },
+        {
+            id: 4,
+            title: 'Медиа-банк',
+            link: '#'
+        },
+        {
+            id: 5,
+            title: 'Контакты',
+            link: 'https://vk.com/id269791339'
+        }
+    ],
 
-    'english':
-        ['About complex', 'About company', 'News', 'Media Bank', 'Contacts']
+    'english': [
+        {
+            id: 1,
+            title: 'About complex',
+            link: '#'
+        },
+        {
+            id: 2,
+            title: 'About company',
+            link: '#'
+        },
+        {
+            id: 3,
+            title: 'News',
+            link: '#'
+        },
+        {
+            id: 4,
+            title: 'Media Bank',
+            link: '#'
+        },
+        {
+            id: 5,
+            title: 'Contacts',
+            link: 'https://vk.com/id269791339'
+        }
+    ]
+}
+
+const expoforum = {
+    'russian': 'ЭКСПОФОРУМ',
+    'english': 'EXPOFORUM'
+}
+
+const expoforumText = {
+    'russian': 'конгрессно-выставочный центр Санкт-Петербурга',
+    'english': 'St. Petersburg Convention and Exhibition Center'
 }
 
 let type = localStorage.getItem('languageData');
 const language = !type ? 'russian' : type;
 
 function setLocalLanguage(language, obj) {
+    if (language === 'russian') {
+        return obj[language];
+    }
+    else if (language === 'english') {
+        return obj[language];
+    }
+}
+
+function setLocalLanguageArr(language, obj) {
     if (language === 'russian') {
         return JSON.stringify(obj[language].map(el => el));
     }
@@ -53,7 +122,10 @@ function setLocalLanguage(language, obj) {
     }
 }
 
-localStorage.setItem('navigationList', setLocalLanguage(language, navigation));
+localStorage.setItem('expoforum', setLocalLanguage(language, expoforum));
+localStorage.setItem('expoforumText', setLocalLanguage(language, expoforumText));
+//ARR
+localStorage.setItem('navigationList', setLocalLanguageArr(language, navigation));
 
 
 
@@ -61,10 +133,27 @@ const navigationList = JSON.parse(localStorage.getItem('navigationList'));
 console.log(navigationList);
 const expoforumNavigation = document.querySelector('.expoforum__navigation');
 
-navigationList.forEach(title => {
-    expoforumNavigation.innerHTML += `<a class="navigation__link link" href="#">${title}</a>`
+navigationList.forEach(({title, link}) => {
+    expoforumNavigation.innerHTML += `<a class="navigation__link link" href="${link}">${title}</a>`
 })
 
+const navigationLinks = document.querySelectorAll('.navigation__link');
+navigationLinks.forEach((link, index) => {
+    link.addEventListener('click', (event) => {
+        for(const linkActive of navigationLinks) {
+            linkActive.classList.remove('navigation__link_active');
+        }
+        link.classList.add('navigation__link_active');
+    })
+})
+
+
+
+
+let expoforumTitle = document.querySelector('.expoforum__title');
+let expoforumTextContent = document.querySelector('.expoforum__text');
+expoforumTitle.textContent = localStorage.getItem('expoforum');
+expoforumTextContent.textContent = localStorage.getItem('expoforumText');
 const nav = document.querySelector('.expoforum__navigation');
 let bar = document.querySelector('.expoforum__bar');
 
