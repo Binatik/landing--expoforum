@@ -123,11 +123,12 @@
     color: #FFFFFF;
 }
 
-.navigation__link_active {
-    color: #FFC41E;
-}
 .navigation__link:hover {
     color: #222222;
+}
+
+.navigation__link.navigation__link_active {
+    color: #FFC41E;
 }
 
 .expoforum__bar {
@@ -153,7 +154,7 @@
     fill: #222222;
 }
 
-.expoforum__search-svg_active {
+.expoforum__search-svg.expoforum__search-svg_active {
     stroke-width: 20;
     stroke: #FFC41E;
     fill: #FFC41E;
@@ -181,10 +182,10 @@
     fill: #222222;
 }
 
-.language__dropdown-svg_active {
-    stroke-width: 20;
-    stroke: #FFC41E;
-    fill: #FFC41E;
+.language__dropdown-svg.language__dropdown-svg_active {
+    stroke-width: 20 !important;
+    stroke: #FFC41E !important;
+    fill: #FFC41E !important;
 }
 
 .language__dropdown-text {

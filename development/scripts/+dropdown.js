@@ -14,7 +14,9 @@ function Dropdown() {
     }
 
     language.children[0].addEventListener('click', () => {
-        language.children[0].classList.toggle('language__dropdown-svg_active');
+        const svg = language.children[0].children[0];
+
+        svg.classList.toggle('language__dropdown-svg_active');
         language.children[1].classList.toggle('language__dropdown-submenu_active');
     })
 
