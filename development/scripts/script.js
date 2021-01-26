@@ -1,6 +1,7 @@
 -include('+dropdown.js')
 -include('+data.js')
 -include('+initData.js')
+-include('+slider.js')
 -include('+resize.js')
 -include('+search.js')
 -include('+burger.js')

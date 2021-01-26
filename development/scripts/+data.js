@@ -63,8 +63,14 @@ const expoforum = {
 
 const expoforumText = {
     'russian': 'конгрессно-выставочный центр Санкт-Петербурга',
-    'english': 'St. Petersburg Convention and Exhibition Center'
+    'english': 'Petersburg Convention and Exhibition Center'
 }
+
+const information = {
+    'russian': 'О комплексе',
+    'english': 'About complex'
+}
+
 
 let type = localStorage.getItem('languageData');
 const language = !type ? 'russian' : type;
@@ -89,6 +95,7 @@ function setLocalLanguageArr(language, obj) {
 
 localStorage.setItem('expoforum', setLocalLanguage(language, expoforum));
 localStorage.setItem('expoforumText', setLocalLanguage(language, expoforumText));
+localStorage.setItem('information', setLocalLanguage(language, information));
 //ARR
 localStorage.setItem('navigationList', setLocalLanguageArr(language, navigation));
 

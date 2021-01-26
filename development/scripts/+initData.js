@@ -21,5 +21,7 @@ navigationLinks.forEach((link, index) => {
 
 let expoforumTitle = document.querySelector('.expoforum__title');
 let expoforumTextContent = document.querySelector('.expoforum__text');
+let expoforumAbout = document.querySelector('.expoforum__about-text');
 expoforumTitle.textContent = localStorage.getItem('expoforum');
 expoforumTextContent.textContent = localStorage.getItem('expoforumText');
+expoforumAbout.textContent = localStorage.getItem('information');
