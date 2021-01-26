@@ -42,6 +42,7 @@ body {
             justify-content: center;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
+    min-width: 0;
 }
 
 .list {
@@ -61,7 +62,7 @@ body {
 .language__dropdown-submenu::-webkit-scrollbar-thumb {
     background: #f6404f;
 }
-.expoforum {
+.header {
     position: relative;
     min-height: 100vh;
     background: center / cover no-repeat url("../image/bgc.webp");
@@ -224,11 +225,12 @@ body {
     color: #FFFFFF;
 }
 
-.navigation__link_active {
-    color: #FFC41E;
-}
 .navigation__link:hover {
     color: #222222;
+}
+
+.navigation__link.navigation__link_active {
+    color: #FFC41E;
 }
 
 .expoforum__bar {
@@ -259,7 +261,7 @@ body {
     fill: #222222;
 }
 
-.expoforum__search-svg_active {
+.expoforum__search-svg.expoforum__search-svg_active {
     stroke-width: 20;
     stroke: #FFC41E;
     fill: #FFC41E;
@@ -290,10 +292,10 @@ body {
     fill: #222222;
 }
 
-.language__dropdown-svg_active {
-    stroke-width: 20;
-    stroke: #FFC41E;
-    fill: #FFC41E;
+.language__dropdown-svg.language__dropdown-svg_active {
+    stroke-width: 20 !important;
+    stroke: #FFC41E !important;
+    fill: #FFC41E !important;
 }
 
 .language__dropdown-text {
@@ -350,6 +352,7 @@ body {
 }
 
 .expoforum__complex {
+    padding: 10px 0 0 0;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -364,11 +367,20 @@ body {
 }
 
 .expoforum__complex .wrapper {
-    padding: 0 403px;
+    width: 100%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 0 303px;
     border: none;
 }
 
+.expoforum__information {
+    /*margin: 0 0 200px 0;*/
+}
+
 .expoforum__title {
+    max-width: 480px;
     font-weight: bold;
     font-size: 64px;
     text-transform: uppercase;
@@ -377,17 +389,104 @@ body {
 
 .expoforum__text {
     max-width: 370px;
+    margin: 20px 0 0 0;
     font-size: 24px;
     color: #FFFFFF;
 }
+
+.expoforum__about {
+    margin: 25px 0 0 0;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+}
+
+.expoforum__about-text {
+    margin: 0 10px 0 0;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+.expoforum__about-svg {
+    fill: #FFFFFF;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+}
+
+.expoforum__about:hover .expoforum__about-svg {
+    stroke-width: 2px;
+    stroke: #FFFFFF;
+}
+
+.arrow {
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+}
+
+.expoforum__about:hover .expoforum__about-svg .arrow {
+    -webkit-transform: translate(18px, 0);
+        -ms-transform: translate(18px, 0);
+            transform: translate(18px, 0);
+    d: path("m14.7 1.4c-0.3-0.3-0.7-0.3-1 0-0.3 0.3-0.3 0.7 0 1l5 5H-31.1c-0.4 0-0.7 0.3-0.7 0.7 0 0.4 0.3 0.7 0.7 0.7H18.7l-5 5c-0.3 0.3-0.3 0.7 0 1 0.3 0.3 0.7 0.3 1 0l6.2-6.2c0.3-0.3 0.3-0.7 0-1z");
+}
+
+.expoforum__list {
+    height: 330px;
+}
+
+.expoforum__cards {
+}
+
+.expoforum__card {
+
+    padding: 30px;
+    background-color: #30BCC9;
+}
+
+.expoforum__card:nth-child(4n+1) {
+    background-color: #2378FC;
+}
+
+.expoforum__card:nth-child(4n+2) {
+    background-color: #30BCC9;
+}
+
+.expoforum__card:nth-child(4n+3) {
+    background-color: #FFC41E;;
+}
+
+.expoforum__card:nth-child(4n+4) {
+    background-color: #F6404F;
+}
+
+.expoforum__card-title {
+    max-width: 127px;
+    font-weight: 500;
+    font-size: 21px;
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+}
+
+.swiper-slide {
+    height:  calc((100% - 30px) / 2);
+    overflow: hidden;
+}
+
 
 @media (max-width: 1200px) {
     .expoforum .wrapper {
         padding: 35px 15px 33px 15px;
     }
+
+    .expoforum__title {
+        font-size: 32px;
+    }
 }
 
 @media (max-width: 768px) {
+
     .mobile__menu {
         position: fixed;
         overflow: auto;
@@ -487,5 +586,11 @@ body {
     .language__dropdown-submenu {
         position: absolute;
         top: 60px;
+    }
+
+    .expoforum__cards {
+        /*margin: 100px 0 0 0;*/
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(4, minmax(148px, auto));
     }
 }

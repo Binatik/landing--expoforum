@@ -14,7 +14,9 @@ function Dropdown() {
     }
 
     language.children[0].addEventListener('click', () => {
-        language.children[0].classList.toggle('language__dropdown-svg_active');
+        const svg = language.children[0].children[0];
+
+        svg.classList.toggle('language__dropdown-svg_active');
         language.children[1].classList.toggle('language__dropdown-submenu_active');
     })
 
@@ -98,8 +100,14 @@ const expoforum = {
 
 const expoforumText = {
     'russian': 'конгрессно-выставочный центр Санкт-Петербурга',
-    'english': 'St. Petersburg Convention and Exhibition Center'
+    'english': 'Petersburg Convention and Exhibition Center'
 }
+
+const information = {
+    'russian': 'О комплексе',
+    'english': 'About complex'
+}
+
 
 let type = localStorage.getItem('languageData');
 const language = !type ? 'russian' : type;
@@ -124,6 +132,7 @@ function setLocalLanguageArr(language, obj) {
 
 localStorage.setItem('expoforum', setLocalLanguage(language, expoforum));
 localStorage.setItem('expoforumText', setLocalLanguage(language, expoforumText));
+localStorage.setItem('information', setLocalLanguage(language, information));
 //ARR
 localStorage.setItem('navigationList', setLocalLanguageArr(language, navigation));
 
@@ -152,8 +161,24 @@ navigationLinks.forEach((link, index) => {
 
 let expoforumTitle = document.querySelector('.expoforum__title');
 let expoforumTextContent = document.querySelector('.expoforum__text');
+let expoforumAbout = document.querySelector('.expoforum__about-text');
 expoforumTitle.textContent = localStorage.getItem('expoforum');
 expoforumTextContent.textContent = localStorage.getItem('expoforumText');
+expoforumAbout.textContent = localStorage.getItem('information');
+import Swiper, { Navigation, Pagination } from 'swiper';
+Swiper.use([Navigation, Pagination]);
+
+const settings = {
+    autoHeight: false,
+    slidesPerView: 4,
+    slidesPerColumn: 2,
+}
+
+// init Swiper:
+const swipe = new Swiper('.swiper-container', settings);
+
+
+
 const nav = document.querySelector('.expoforum__navigation');
 let bar = document.querySelector('.expoforum__bar');
 
