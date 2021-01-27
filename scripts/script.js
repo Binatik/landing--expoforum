@@ -165,20 +165,6 @@ let expoforumAbout = document.querySelector('.expoforum__about-text');
 expoforumTitle.textContent = localStorage.getItem('expoforum');
 expoforumTextContent.textContent = localStorage.getItem('expoforumText');
 expoforumAbout.textContent = localStorage.getItem('information');
-import Swiper, { Navigation, Pagination } from 'swiper';
-Swiper.use([Navigation, Pagination]);
-
-const settings = {
-    autoHeight: false,
-    slidesPerView: 4,
-    slidesPerColumn: 2,
-}
-
-// init Swiper:
-const swipe = new Swiper('.swiper-container', settings);
-
-
-
 const nav = document.querySelector('.expoforum__navigation');
 let bar = document.querySelector('.expoforum__bar');
 
@@ -233,6 +219,31 @@ document.addEventListener("DOMContentLoaded", () => {
         changeHeightBar();
     }, 300));
 });
+import Swiper, { Navigation, Pagination } from 'swiper';
+Swiper.use([Navigation, Pagination]);
+
+const settings = {
+    breakpoints: {
+        320: {
+            autoHeight: false,
+            spaceBetween: 30,
+            slidesPerColumn: 1,
+            slidesPerView: 2,
+        },
+        992: {
+            autoHeight: false,
+            spaceBetween: 30,
+            slidesPerView: 2,
+            slidesPerColumn: 2,
+        },
+    }
+}
+
+// init Swiper:
+const swipe = new Swiper('.swiper-container', settings);
+
+
+
 function Search() {
     const searchContainer = document.querySelector('.expoforum__search');
     const searchInput = document.querySelector('.expoforum__search-input');
