@@ -56,6 +56,64 @@ const navigation = {
     ]
 }
 
+const details = {
+    'russian': [
+        {
+            id: 1,
+            title: 'Календарь мероприятий',
+            subTitle: 'Подробнее'
+        },
+        {
+            id: 2,
+            title: 'Онлайн-заявка на организацию мероприятия',
+            subTitle: 'Подробнее'
+        },
+        {
+            id: 3,
+            title: 'Как добраться до Экспофорума',
+            subTitle: 'Подробнее'
+        },
+        {
+            id: 4,
+            title: 'План и инфраструктура комплекса',
+            subTitle: 'Подробнее'
+        },
+        {
+            id: 5,
+            title: 'Календарь мероприятий',
+            subTitle: 'Подробнее'
+        }
+    ],
+
+    'english': [
+        {
+            id: 1,
+            title: 'Calendar of events',
+            subTitle: 'Details'
+        },
+        {
+            id: 2,
+            title: 'Online application for organizing the event',
+            subTitle: 'Details'
+        },
+        {
+            id: 3,
+            title: 'How to get to Expoforum',
+            subTitle: 'Details'
+        },
+        {
+            id: 4,
+            title: 'Plan and infrastructure of the complex',
+            subTitle: 'Details'
+        },
+        {
+            id: 5,
+            title: 'Календарь мероприятий',
+            subTitle: 'Calendar of events'
+        }
+    ]
+}
+
 const expoforum = {
     'russian': 'ЭКСПОФОРУМ',
     'english': 'EXPOFORUM'
@@ -97,6 +155,8 @@ localStorage.setItem('expoforum', setLocalLanguage(language, expoforum));
 localStorage.setItem('expoforumText', setLocalLanguage(language, expoforumText));
 localStorage.setItem('information', setLocalLanguage(language, information));
 //ARR
+
 localStorage.setItem('navigationList', setLocalLanguageArr(language, navigation));
+localStorage.setItem('detailsList', setLocalLanguageArr(language, details));
 
 

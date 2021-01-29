@@ -12,9 +12,9 @@
 }
 
 .mobile__menu {
+    position: fixed;
     background-color: transparent;
     width: 100%;
-    height: 100%;
     transition: 0.4s;
 }
 
@@ -63,7 +63,8 @@
 }
 
 .expoforum__search {
-    width: 0;
+    transform: translate(0, -100%);
+    width: 100%;
     height: 0;
     visibility: hidden;
     position: relative;
@@ -71,15 +72,15 @@
 }
 
 .expoforum__search_active {
-    width: 100%;
+    transform: translate(0, 0);
     height: 100%;
     visibility: initial;
     position: relative;
 }
 
 .expoforum__search-input {
-    width: 0;
-    height: 0;
+    width: 100%;
+    height: 100%;
     visibility: hidden;
     padding: 10px;
     font-size: 16px;
@@ -89,8 +90,6 @@
 }
 
 .expoforum__search-input_active {
-    width: 100%;
-    height: 100%;
     visibility: initial;
 }
 
@@ -351,6 +350,10 @@
     .expoforum__list {
         height: 330px;
     }
+
+    .expoforum__card {
+        overflow: auto !important;
+    }
 }
 
 @media (max-width: 1600px) {
@@ -387,6 +390,7 @@
     .mobile__menu {
         position: fixed;
         overflow: auto;
+        height: 100%;
         max-width: 360px;
         background-color: #F6404F;
         transform: translate(-1000%, 0);
@@ -399,6 +403,10 @@
 
     .mobile__burger {
         z-index: 4;
+    }
+
+    .expoforum__search {
+        margin: 20px 0 0 0;
     }
 
     .expoforum__top {
@@ -458,5 +466,9 @@
     .language__dropdown-submenu {
         position: absolute;
         top: 60px;
+    }
+
+    .expoforum__card-title {
+        min-width: 100%;
     }
 }
