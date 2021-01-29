@@ -109,6 +109,11 @@
     margin: 7px 30px 0 0;
     font-size: 32px;
     font-weight: 700;
+    transition: 0.3s;
+}
+
+.link__letter {
+    transition: 0.3s;
 }
 
 .expoforum__navigation {
@@ -235,7 +240,7 @@
 }
 
 .expoforum__complex {
-    padding: 10px 0 0 0;
+    padding: 10% 0 0 0;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -245,12 +250,13 @@
 .expoforum__complex .wrapper {
     width: 100%;
     justify-content: space-between;
-    padding: 0 303px;
+    padding: 0 280px;
     border: none;
 }
 
 .expoforum__information {
-    margin: 180px 25px 50px 0;
+    align-self: flex-start;
+    margin: 10px 25px 10px 0;
 }
 
 .expoforum__title {
@@ -304,7 +310,7 @@
 }
 
 .expoforum__list {
-    margin: 0 !important;
+    margin: 250px 0 30px 0 !important;
 }
 
 .expoforum__card:nth-child(4n+1) {
@@ -358,6 +364,10 @@
 }
 
 @media (max-width: 992px) {
+
+    .expoforum__language {
+        margin: 0 0 0 25px;
+    }
 
     .expoforum__list {
         height: auto;

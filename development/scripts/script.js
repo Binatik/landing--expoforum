@@ -4,4 +4,5 @@
 -include('+resize.js')
 -include('+slider.js')
 -include('+search.js')
+-include('+effect.js')
 -include('+burger.js')
