@@ -3,12 +3,21 @@ Swiper.use([Navigation, Pagination]);
 
 const settings = {
     breakpoints: {
+
         320: {
-            autoHeight: false,
-            spaceBetween: 30,
+            autoHeight: true,
+            spaceBetween: 10,
+            slidesPerColumn: 1,
+            slidesPerView: 1,
+        },
+
+        768: {
+            autoHeight: true,
+            spaceBetween: 10,
             slidesPerColumn: 1,
             slidesPerView: 2,
         },
+
         992: {
             autoHeight: false,
             spaceBetween: 30,

@@ -1,11 +1,15 @@
-.language__dropdown-submenu::-webkit-scrollbar {
+.language__dropdown-submenu,
+.expoforum__card::-webkit-scrollbar {
     width: 0;
 }
 
-.language__dropdown-submenu::-webkit-scrollbar-track {
+.language__dropdown-submenu,
+.expoforum__card::-webkit-scrollbar-track {
     background: #000;
 }
 
-.language__dropdown-submenu::-webkit-scrollbar-thumb {
+.language__dropdown-submenu,
+.expoforum__card::-webkit-scrollbar-thumb {
     background: #f6404f;
 }
+

@@ -1,7 +1,9 @@
 .header {
-    position: relative;
-    min-height: 100vh;
     background: center / cover no-repeat url("../image/bgc.webp");
+}
+
+.expoforum {
+    min-height: 100vh;
 }
 
 .expoforum .wrapper {
@@ -171,6 +173,8 @@
 
 .language__dropdown-svg {
     position: static;
+    flex-shrink: 0;
+    align-self: flex-start;
     margin: 0 11px 0 0;
     fill: #FFFFFF;
     z-index: 3;
@@ -235,7 +239,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    height: 100vh;
+
 }
 
 .expoforum__complex .wrapper {
@@ -246,7 +250,7 @@
 }
 
 .expoforum__information {
-    margin: 0 0 200px 0;
+    margin: 180px 25px 50px 0;
 }
 
 .expoforum__title {
@@ -294,19 +298,13 @@
     d: path("m14.7 1.4c-0.3-0.3-0.7-0.3-1 0-0.3 0.3-0.3 0.7 0 1l5 5H-31.1c-0.4 0-0.7 0.3-0.7 0.7 0 0.4 0.3 0.7 0.7 0.7H18.7l-5 5c-0.3 0.3-0.3 0.7 0 1 0.3 0.3 0.7 0.3 1 0l6.2-6.2c0.3-0.3 0.3-0.7 0-1z");
 }
 
-.expoforum__list {
-    margin: 150px 0 0 0;
-    height: 330px;
-}
-
 .swiper-container .expoforum__cards {
     width: 540px !important;
     height: 100%;
 }
 
-.expoforum__card {
-    padding: 30px;
-    background-color: #30BCC9;
+.expoforum__list {
+    margin: 0 !important;
 }
 
 .expoforum__card:nth-child(4n+1) {
@@ -325,6 +323,11 @@
     background-color: #F6404F;
 }
 
+.expoforum__card {
+    padding: 30px;
+    background-color: #30BCC9;
+}
+
 .expoforum__card-title {
     max-width: 127px;
     font-weight: 500;
@@ -334,36 +337,38 @@
 }
 
 .expoforum__cards .swiper-slide {
-    height:  calc((100% - 30px) / 2);
+    height:  calc((100% - 30px) / 2) !important;
     overflow: hidden;
+}
+
+@media (min-width: 992px) {
+    .expoforum__list {
+        height: 330px;
+    }
 }
 
 @media (max-width: 1600px) {
     .expoforum .wrapper {
-        padding: 35px 15px 33px 15px;
+        padding: 15px;
     }
 
-    .expoforum__title {
-        font-size: 42px;
+    .expoforum__information {
+        margin: 80px 25px 50px 0;
     }
-}
-
-
-@media (max-width: 1200px) {
 }
 
 @media (max-width: 992px) {
 
     .expoforum__list {
-        margin: 0;
         height: auto;
     }
 
-    .swiper-container .expoforum__cards {
+    .expoforum__cards {
+        height: 100% !important;
     }
 
     .expoforum__cards .swiper-slide {
-        height:  calc(100% - 30px);
+        margin-top: 0 !important;
     }
 }
 
@@ -443,11 +448,5 @@
     .language__dropdown-submenu {
         position: absolute;
         top: 60px;
-    }
-
-    .expoforum__cards {
-        /*margin: 100px 0 0 0;*/
-        grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: repeat(4, minmax(148px, auto));
     }
 }
