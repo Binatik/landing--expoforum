@@ -6,7 +6,6 @@ for (const letter of titleTexts) {
     linkLogo.innerHTML += `<span class="link__letter">${letter}</span>`
 }
 const letters = document.querySelectorAll('.link__letter');
-console.log(letters);
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
