@@ -1,5 +1,3 @@
-let pageLanguage = 'Russian'; //This variable should be the highest of all;
-
 function Dropdown() {
     const language = document.querySelector('.language');
     let dropdownText = document.querySelector('.language__dropdown-text');
@@ -13,7 +11,8 @@ function Dropdown() {
         console.log(localStorage.getItem('languageData'));
     }
 
-    language.children[0].addEventListener('click', () => {
+    language.children[0].addEventListener('click', (event) => {
+        event.preventDefault();
         const svg = language.children[0].children[0];
 
         svg.classList.toggle('language__dropdown-svg_active');
@@ -34,4 +33,5 @@ function Dropdown() {
     }
 
 }
+
 Dropdown();

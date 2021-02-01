@@ -12,10 +12,14 @@
 }
 
 .mobile__menu {
-    position: fixed;
     background-color: transparent;
     width: 100%;
     transition: 0.4s;
+}
+
+.mobile__menu_fixed {
+    position: fixed;
+    background-color: #f6404f;
 }
 
 .mobile__burger {
@@ -387,6 +391,10 @@
 
 @media (max-width: 768px) {
 
+    .header {
+        background: left / cover no-repeat url("../image/bgc.webp");
+    }
+
     .mobile__menu {
         position: fixed;
         overflow: auto;
@@ -470,5 +478,13 @@
 
     .expoforum__card-title {
         min-width: 100%;
+    }
+
+    .expoforum__complex {
+        padding: 3% 0 0 0;
+    }
+
+    .expoforum__list {
+        margin: 50px 0 30px 0 !important;
     }
 }

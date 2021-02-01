@@ -1,4 +1,3 @@
-import "@babel/polyfill";
 const titleTexts = 'EXPOFORUM'.split('');
 
 const linkLogo = document.querySelector('.link');

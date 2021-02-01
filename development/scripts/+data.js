@@ -1,3 +1,5 @@
+let pageLanguage = 'Russian'; //GlobalVar;
+import "@babel/polyfill";
 //Export as json ELL
 const titleLogoData = {
     "russian": "ЭКСПОФОРУМ",
