@@ -75,6 +75,9 @@ function getTask(task) {
                 presets: ['@babel/env'], 
                 plugins: ['transform-react-jsx']
             }))
+            .pipe(browserify({
+                insertGlobals : true
+            }))
             .pipe(uglify())
             .pipe(rename({
                 extname: '.min.js'
@@ -91,6 +94,7 @@ const {
 
     gulp = require('gulp'),
     browserSync = require('browser-sync').create(),
+    browserify = require('gulp-browserify'),
     fileinclude = require('gulp-file-include'),
     autoprefixer = require('gulp-autoprefixer'),
     gcmq = require('gulp-group-css-media-queries'),
