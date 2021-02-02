@@ -1,5 +1,10 @@
 let pageLanguage = 'Russian'; //GlobalVar;
+
 import "@babel/polyfill";
+
+import Swiper, { Navigation, Pagination } from 'swiper';
+Swiper.use([Navigation, Pagination]);
+
 //Export as json ELL
 const titleLogoData = {
     "russian": "ЭКСПОФОРУМ",

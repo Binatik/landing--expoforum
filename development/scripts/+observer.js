@@ -1,11 +1,12 @@
 function Observer() {
     const mobileMenu = document.querySelector('.mobile__menu');
     const navigationLinks = document.querySelectorAll('.navigation__link');
-    let sections = document.querySelectorAll('.section')
+    const childrens = document.querySelectorAll('.auto-height');
 
-    const observerOptions = {
-        root: null,
-        threshold: 0.5
+    let sections = document.querySelectorAll('.section');
+
+    function changeHeight(target, alterations, observer) {
+        resizeCard(target);
     }
 
     function changeNavigation(entries, observer) {
@@ -27,8 +28,39 @@ function Observer() {
         })
     }
 
-    const observer = new IntersectionObserver(changeNavigation,observerOptions);
-    sections.forEach((target) => observer.observe(target));
+    function sectionsObserver(selector, func, settings) {
+        const observer = new IntersectionObserver(func, settings);
+
+        selector.length > 0
+            ? selector.forEach((target) => observer.observe(target))
+            : observer.observe(selector);
+    }
+    sectionsObserver(sections, changeNavigation, {
+        root: null,
+        threshold: 0.5
+    })
+
+    function observerElementDOM(selection, func, status) {
+        const target = document.querySelector(selection);
+        const observer =  new MutationObserver((alterations, observer) => (
+            func(target, alterations, observer)))
+
+        const settings = status ?
+            {
+                childList: true,
+                subtree: true,
+                characterDataOldValue: true
+            }
+            :
+            {
+                childList: true,
+                subtree: false,
+                characterDataOldValue: false
+            }
+
+        observer.observe(target, settings);
+    }
+    observerElementDOM('.swiper-wrapper', changeHeight, true);
 }
 
 Observer();

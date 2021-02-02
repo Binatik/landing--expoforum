@@ -288,76 +288,32 @@
     color: #FFFFFF;
 }
 
-.expoforum__about-svg {
+.about-svg {
     fill: #FFFFFF;
     transition: 0.2s;
 }
 
-.expoforum__about:hover .expoforum__about-svg {
-    stroke-width: 2px;
-    stroke: #FFFFFF;
+.card__item {
+    padding: 30px 40px;
+    background-color: #f6404f;
 }
 
-.arrow {
-    transition: 0.2s;
-}
-
-.expoforum__about:hover .expoforum__about-svg .arrow {
-    transform: translate(18px, 0);
-    d: path("m14.7 1.4c-0.3-0.3-0.7-0.3-1 0-0.3 0.3-0.3 0.7 0 1l5 5H-31.1c-0.4 0-0.7 0.3-0.7 0.7 0 0.4 0.3 0.7 0.7 0.7H18.7l-5 5c-0.3 0.3-0.3 0.7 0 1 0.3 0.3 0.7 0.3 1 0l6.2-6.2c0.3-0.3 0.3-0.7 0-1z");
-}
-
-.swiper-container .expoforum__cards {
-    width: 540px !important;
-    height: 100%;
-}
-
-.expoforum__list {
-    margin: 250px 0 30px 0 !important;
-}
-
-.expoforum__card:nth-child(4n+1) {
-    background-color: #2378FC;
-}
-
-.expoforum__card:nth-child(4n+2) {
-    background-color: #30BCC9;
-}
-
-.expoforum__card:nth-child(4n+3) {
-    background-color: #FFC41E;;
-}
-
-.expoforum__card:nth-child(4n+4) {
-    background-color: #F6404F;
-}
-
-.expoforum__card {
-    padding: 30px;
-    background-color: #30BCC9;
-}
-
-.expoforum__card-title {
-    max-width: 127px;
+.card__title {
+    margin: 15px 0 0 0;
     font-weight: 500;
     font-size: 21px;
     letter-spacing: -0.01em;
     color: #FFFFFF;
 }
 
-.expoforum__cards .swiper-slide {
-    height:  calc((100% - 30px) / 2) !important;
-    overflow: hidden;
+.card__link {
+    justify-content: flex-start;
+    font-size: 14px;
+    color: #FFFFFF;
 }
 
-@media (min-width: 992px) {
-    .expoforum__list {
-        height: 330px;
-    }
-
-    .expoforum__card {
-        overflow: auto !important;
-    }
+.card__link span {
+    margin: 0 10px 0 0;
 }
 
 @media (max-width: 1600px) {
@@ -374,18 +330,6 @@
 
     .expoforum__language {
         margin: 0 0 0 25px;
-    }
-
-    .expoforum__list {
-        height: auto;
-    }
-
-    .expoforum__cards {
-        height: 100% !important;
-    }
-
-    .expoforum__cards .swiper-slide {
-        margin-top: 0 !important;
     }
 }
 
@@ -484,7 +428,4 @@
         padding: 3% 0 0 0;
     }
 
-    .expoforum__list {
-        margin: 50px 0 30px 0 !important;
-    }
 }

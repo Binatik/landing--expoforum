@@ -26,7 +26,3 @@ linkLogo.addEventListener('mouseout', async () => {
     }
 
 });
-
-
-
-
