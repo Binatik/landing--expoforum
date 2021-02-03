@@ -100,6 +100,7 @@
 .expoforum__top {
     width: 100%;
     display: flex;
+    flex-wrap:wrap;
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
@@ -295,11 +296,26 @@
 
 .card__item {
     padding: 30px 40px;
-    background-color: #f6404f;
+}
+
+.card__item:nth-child(4n+1) {
+    background-color: #2378FC;
+}
+
+.card__item:nth-child(4n+2) {
+    background-color: #30BCC9;
+}
+
+.card__item:nth-child(4n+3) {
+    background-color: #FFC41E;;
+}
+
+.card__item:nth-child(4n+4) {
+    background-color: #F6404F;
 }
 
 .card__title {
-    margin: 15px 0 0 0;
+    margin: 0 0 15px 0;
     font-weight: 500;
     font-size: 21px;
     letter-spacing: -0.01em;
@@ -314,6 +330,21 @@
 
 .card__link span {
     margin: 0 10px 0 0;
+}
+
+@media (min-width: 768px) {
+    .swiper-container {
+        padding-bottom: 30px;
+        margin-right: 0;
+        margin-left: 0;
+        height: 400px;
+        width: 540px;
+    }
+
+    .card__item {
+        height: calc((100% - 30px) / 2) !important;
+        overflow: hidden;
+    }
 }
 
 @media (max-width: 1600px) {

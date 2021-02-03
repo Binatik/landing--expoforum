@@ -1,20 +1,21 @@
 -include('+data.js')
 
 //Global
-function resizeCard(card) {
-    const childrens = document.querySelectorAll('.auto-height');
+function resizeCard(card, innerWidth = 768) {
+    if (window.innerWidth <= innerWidth) {
+        const childrens = document.querySelectorAll('.auto-height');
+        let target;
+        let height;
 
-    let target;
-    let height;
-
-    if (typeof card === 'string') {
-        target = document.querySelector(card);
-        height = target.clientHeight;
-        childrens.forEach(element => element.style.minHeight = height + 'px');
-    }
-    else {
-        const height = card.clientHeight;
-        childrens.forEach(element => element.style.minHeight = height + 'px');
+        if (typeof card === 'string') {
+            target = document.querySelector(card);
+            height = target.clientHeight;
+            childrens.forEach(element => element.style.minHeight = height + 'px');
+        }
+        else {
+            const height = card.clientHeight;
+            childrens.forEach(element => element.style.minHeight = height + 'px');
+        }
     }
 }
 

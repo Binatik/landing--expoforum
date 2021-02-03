@@ -20,33 +20,44 @@ function Resize() {
         throttle("resize", "optimizedResize");
     })();
 
-    function slider(wrapper) {
+    let cardSwiper;
+    function mobileSlider(wrapper) {
+        resizeCard('.swiper-wrapper');
         const wrapperSlider = document.querySelector(wrapper);
+        if (window.innerWidth <= 768 && wrapperSlider.dataset.mobile === 'false') {
 
-        let cardSwiper = '';
+            if (wrapperSlider.classList.contains('swiper-container-initialized')) {
+                cardSwiper.destroy();
+            }
 
-        function mobileSlider() {
-            if (window.innerWidth <= 768 && wrapperSlider.dataset.mobile === 'false') {
-                resizeCard('.swiper-wrapper');
-
-                cardSwiper = new Swiper(wrapperSlider, {
-                    autoHeight: false,
-                    slidesPerView: 1,
-                    spaceBetween: 10,
-                    breakpoints: {
-                        576: {
-                            slidesPerView: 2,
-                        }
+            cardSwiper = new Swiper(wrapperSlider, {
+                autoHeight: false,
+                slidesPerView: 1,
+                spaceBetween: 10,
+                breakpoints: {
+                    576: {
+                        slidesPerView: 2,
                     }
-                });
-                wrapperSlider.dataset.mobile = 'true';
-            }
-            if (window.innerWidth >= 768) {
-                wrapperSlider.dataset.mobile = 'false';
-                if (wrapperSlider.classList.contains('swiper-container-initialized')) cardSwiper.destroy();
-            }
+                }
+            });
+            wrapperSlider.dataset.mobile = 'true';
         }
-        mobileSlider();
+        if (window.innerWidth > 768) {
+            if (wrapperSlider.classList.contains('swiper-container-initialized')) {
+                cardSwiper.destroy();
+            }
+
+            cardSwiper = new Swiper(wrapperSlider, {
+                breakpoints: {
+                    768: {
+                        spaceBetween: 30,
+                        slidesPerView: 2,
+                        slidesPerColumn: 2
+                    }
+                }
+            });
+            wrapperSlider.dataset.mobile = 'false';
+        }
     }
 
     function changeHeightBar() {
@@ -91,11 +102,11 @@ function Resize() {
     }
 
     changeHeightBar();
-    slider('.swiper-container');
+    mobileSlider('.swiper-container');
     resizeCard('.swiper-wrapper');
 
     window.addEventListener('optimizedResize', debounce(() => {
-        slider('.swiper-container');
+        mobileSlider('.swiper-container');
         changeHeightBar();
     }, 150));
 
