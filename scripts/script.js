@@ -407,11 +407,12 @@ renderData({
     window.addEventListener('optimizedResize', debounce(() => {
         mobileSlider('.swiper-container');
         changeHeightBar();
-    }, 150));
-
-    window.addEventListener('optimizedResize', throttle(() => {
         resizeCard('.swiper-wrapper');
     }, 150));
+
+//     window.addEventListener('optimizedResize', throttle(() => {
+//         resizeCard('.swiper-wrapper');
+//     }, 150));
 }
 
 Resize();
