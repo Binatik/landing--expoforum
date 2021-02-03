@@ -51,6 +51,29 @@ body {
     list-style-type: none;
 }
 
+.about:hover .about-svg .arrow {
+    stroke-width: 2px;
+    stroke: #FFFFFF;
+    -webkit-transform: translate(18px, 0);
+        -ms-transform: translate(18px, 0);
+            transform: translate(18px, 0);
+    d: path("m14.7 1.4c-0.3-0.3-0.7-0.3-1 0-0.3 0.3-0.3 0.7 0 1l5 5H-31.1c-0.4 0-0.7 0.3-0.7 0.7 0 0.4 0.3 0.7 0.7 0.7H18.7l-5 5c-0.3 0.3-0.3 0.7 0 1 0.3 0.3 0.7 0.3 1 0l6.2-6.2c0.3-0.3 0.3-0.7 0-1z");
+}
+
+.arrow {
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+}
+
+/*
+A class that is children.
+It gets the height of the parent
+*/
+.auto-height {
+    height: auto;
+}
+
 .test {
     padding: 30px;
     min-height: 500px;
@@ -65,6 +88,7 @@ body {
 :root {
     --swiper-theme-color: #007aff;
 }
+
 .swiper-container {
     margin-left: auto;
     margin-right: auto;
@@ -857,6 +881,8 @@ button.swiper-pagination-bullet {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap:wrap;
+        flex-wrap:wrap;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -1093,81 +1119,65 @@ button.swiper-pagination-bullet {
     color: #FFFFFF;
 }
 
-.expoforum__about-svg {
+.about-svg {
     fill: #FFFFFF;
     -webkit-transition: 0.2s;
     -o-transition: 0.2s;
     transition: 0.2s;
 }
 
-.expoforum__about:hover .expoforum__about-svg {
-    stroke-width: 2px;
-    stroke: #FFFFFF;
+.card__item {
+    padding: 30px 40px;
 }
 
-.arrow {
-    -webkit-transition: 0.2s;
-    -o-transition: 0.2s;
-    transition: 0.2s;
-}
-
-.expoforum__about:hover .expoforum__about-svg .arrow {
-    -webkit-transform: translate(18px, 0);
-        -ms-transform: translate(18px, 0);
-            transform: translate(18px, 0);
-    d: path("m14.7 1.4c-0.3-0.3-0.7-0.3-1 0-0.3 0.3-0.3 0.7 0 1l5 5H-31.1c-0.4 0-0.7 0.3-0.7 0.7 0 0.4 0.3 0.7 0.7 0.7H18.7l-5 5c-0.3 0.3-0.3 0.7 0 1 0.3 0.3 0.7 0.3 1 0l6.2-6.2c0.3-0.3 0.3-0.7 0-1z");
-}
-
-.swiper-container .expoforum__cards {
-    width: 540px !important;
-    height: 100%;
-}
-
-.expoforum__list {
-    margin: 250px 0 30px 0 !important;
-}
-
-.expoforum__card:nth-child(4n+1) {
+.card__item:nth-child(4n+1) {
     background-color: #2378FC;
 }
 
-.expoforum__card:nth-child(4n+2) {
+.card__item:nth-child(4n+2) {
     background-color: #30BCC9;
 }
 
-.expoforum__card:nth-child(4n+3) {
+.card__item:nth-child(4n+3) {
     background-color: #FFC41E;;
 }
 
-.expoforum__card:nth-child(4n+4) {
+.card__item:nth-child(4n+4) {
     background-color: #F6404F;
 }
 
-.expoforum__card {
-    padding: 30px;
-    background-color: #30BCC9;
-}
-
-.expoforum__card-title {
-    max-width: 127px;
+.card__title {
+    margin: 0 0 15px 0;
     font-weight: 500;
     font-size: 21px;
     letter-spacing: -0.01em;
     color: #FFFFFF;
 }
 
-.expoforum__cards .swiper-slide {
-    height:  calc((100% - 30px) / 2) !important;
-    overflow: hidden;
+.card__link {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    font-size: 14px;
+    color: #FFFFFF;
 }
 
-@media (min-width: 992px) {
-    .expoforum__list {
-        height: 330px;
+.card__link span {
+    margin: 0 10px 0 0;
+}
+
+@media (min-width: 768px) {
+    .swiper-container {
+        padding-bottom: 30px;
+        margin-right: 0;
+        margin-left: 0;
+        height: 400px;
+        width: 540px;
     }
 
-    .expoforum__card {
-        overflow: auto !important;
+    .card__item {
+        height: calc((100% - 30px) / 2) !important;
+        overflow: hidden;
     }
 }
 
@@ -1185,18 +1195,6 @@ button.swiper-pagination-bullet {
 
     .expoforum__language {
         margin: 0 0 0 25px;
-    }
-
-    .expoforum__list {
-        height: auto;
-    }
-
-    .expoforum__cards {
-        height: 100% !important;
-    }
-
-    .expoforum__cards .swiper-slide {
-        margin-top: 0 !important;
     }
 }
 
@@ -1320,7 +1318,6 @@ button.swiper-pagination-bullet {
         padding: 3% 0 0 0;
     }
 
-    .expoforum__list {
-        margin: 50px 0 30px 0 !important;
-    }
 }
+
+

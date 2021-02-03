@@ -1,5 +1,10 @@
 let pageLanguage = 'Russian'; //GlobalVar;
+
 import "@babel/polyfill";
+
+import Swiper, { Navigation, Pagination } from 'swiper';
+Swiper.use([Navigation, Pagination]);
+
 //Export as json ELL
 const titleLogoData = {
     "russian": "ЭКСПОФОРУМ",
@@ -140,7 +145,27 @@ const cardsHeaderData = {
     ]
 }
 
-function Dropdown() {
+//Global
+function resizeCard(card, innerWidth = 768) {
+    if (window.innerWidth <= innerWidth) {
+        const childrens = document.querySelectorAll('.auto-height');
+        let target;
+        let height;
+
+        if (typeof card === 'string') {
+            target = document.querySelector(card);
+            height = target.clientHeight;
+            childrens.forEach(element => element.style.minHeight = height + 'px');
+        }
+        else {
+            const height = card.clientHeight;
+            childrens.forEach(element => element.style.minHeight = height + 'px');
+        }
+    }
+}
+
+document.addEventListener("DOMContentLoaded", (event) => {
+    function Dropdown() {
     const language = document.querySelector('.language');
     let dropdownText = document.querySelector('.language__dropdown-text');
     const dropdownLinks = document.querySelectorAll('.language__dropdown-link');
@@ -177,7 +202,7 @@ function Dropdown() {
 }
 
 Dropdown();
-function Translator() {
+    function Translator() {
     let language = localStorage.getItem('languageData');
     language = !language ? 'russian' : language;
 
@@ -218,7 +243,7 @@ function Translator() {
     setLocalLanguage(language, cardsHeaderData, 'cardsHeaderData');
 }
 Translator();
-function renderData(settings) {
+    function renderData(settings) {
     const { selector, insertionElement, layout} = settings;
     let element = document.querySelector(selector);
 
@@ -247,9 +272,9 @@ renderData({
     layout: (targetItem) => (
         `<h1 class="expoforum__title">${targetItem.headerTitle}</h1>
              <p class="expoforum__text">${targetItem.title}</p>
-             <a href="${targetItem.link}" class="expoforum__about link center-items">
+             <a href="${targetItem.link}" class="expoforum__about about link center-items">
                  <span class="expoforum__about-text">${targetItem.textLink}</span>
-                 <svg class="expoforum__about-svg" xmlns="http://www.w3.org/2000/svg" width="50" height="16" viewBox="0 0 50 16">
+                 <svg class="about-svg" xmlns="http://www.w3.org/2000/svg" width="50" height="16" viewBox="0 0 50 16">
                       <path class="arrow" d="m14.7 1.4c-0.3-0.3-0.7-0.3-1 0-0.3 0.3-0.3 0.7 0 1l5 5H-5.1c-0.4 0-0.7 0.3-0.7 0.7 0 0.4 0.3 0.7 0.7 0.7H18.7l-5 5c-0.3 0.3-0.3 0.7 0 1 0.3 0.3 0.7 0.3 1 0l6.2-6.2c0.3-0.3 0.3-0.7 0-1z"/>
                  </svg>
              </a>`
@@ -257,40 +282,148 @@ renderData({
 })
 
 renderData({
-    selector: '.expoforum__cards',
+    selector: '.cards__items',
     insertionElement: JSON.parse(localStorage.getItem('cardsHeaderData')),
 
     layout: (targetItem) => (
-        `<div class="expoforum__card swiper-slide">
-                            <h2 class="expoforum__card-title">${targetItem.title}</h2>
-                            <a href="" class="expoforum__about link center-items">
-                                <span class="expoforum__about-text">${targetItem.subTitle}</span>
-                                <svg class="expoforum__about-svg" xmlns="http://www.w3.org/2000/svg" width="50" height="16" viewBox="0 0 50 16">
+        ` <div class="swiper-slide card__item auto-height">
+                            <h2 class="card__title">${targetItem.title}</h2>
+                            <a href="" class="card__link link about center-items">
+                                <span>${targetItem.subTitle}</span>
+                                <svg class="about-svg" xmlns="http://www.w3.org/2000/svg" width="50" height="16" viewBox="0 0 50 16">
                                     <path class="arrow" d="m14.7 1.4c-0.3-0.3-0.7-0.3-1 0-0.3 0.3-0.3 0.7 0 1l5 5H-5.1c-0.4 0-0.7 0.3-0.7 0.7 0 0.4 0.3 0.7 0.7 0.7H18.7l-5 5c-0.3 0.3-0.3 0.7 0 1 0.3 0.3 0.7 0.3 1 0l6.2-6.2c0.3-0.3 0.3-0.7 0-1z"/>
                                 </svg>
                             </a>
                         </div>`
     )
 })
+    function Resize() {
+    const nav = document.querySelector('.expoforum__navigation');
+    let bar = document.querySelector('.expoforum__bar');
 
-// renderData({
-//     selector: '.expoforum__information',
-//     insertionElement: titleLogoData,
-//     layout: `<h1 class="expoforum__title">${titleLogo}</h1>`
-// })
+    (function() {
+        const throttle = function(type, name, obj) {
+            obj = obj || window;
+            let running = false;
+            const func = function() {
+                if (running) { return; }
+                running = true;
+                requestAnimationFrame(function() {
+                    obj.dispatchEvent(new CustomEvent(name));
+                    running = false;
+                });
+            };
+            obj.addEventListener(type, func);
+        };
+        /* init - you can init any event */
+        throttle("resize", "optimizedResize");
+    })();
 
+    let cardSwiper;
+    function mobileSlider(wrapper) {
+        resizeCard('.swiper-wrapper');
+        const wrapperSlider = document.querySelector(wrapper);
+        if (window.innerWidth <= 768 && wrapperSlider.dataset.mobile === 'false') {
 
+            if (wrapperSlider.classList.contains('swiper-container-initialized')) {
+                cardSwiper.destroy();
+            }
 
+            cardSwiper = new Swiper(wrapperSlider, {
+                autoHeight: false,
+                slidesPerView: 1,
+                spaceBetween: 10,
+                breakpoints: {
+                    576: {
+                        slidesPerView: 2,
+                    }
+                }
+            });
+            wrapperSlider.dataset.mobile = 'true';
+        }
+        if (window.innerWidth > 768) {
+            if (wrapperSlider.classList.contains('swiper-container-initialized')) {
+                cardSwiper.destroy();
+            }
 
+            cardSwiper = new Swiper(wrapperSlider, {
+                breakpoints: {
+                    768: {
+                        spaceBetween: 30,
+                        slidesPerView: 2,
+                        slidesPerColumn: 2
+                    }
+                }
+            });
+            wrapperSlider.dataset.mobile = 'false';
+        }
+    }
 
-function Observer() {
+    function changeHeightBar() {
+        const heightNav = nav.offsetHeight;
+        bar = document.querySelector('.expoforum__bar');
+        if (window.innerWidth > 768) {
+            bar.setAttribute('style', `height: ${heightNav}px`);
+        }
+        else {
+            bar.setAttribute('style', `height: 100%`);
+        }
+    }
+
+    function debounce(fn, delay) {
+        let timerId;
+
+        return function(...args) {
+            if (timerId) {
+                clearTimeout(timerId);
+            }
+
+            timerId = setTimeout(() => {
+                fn.apply(this, args);
+                timerId = null;
+            }, delay);
+        };
+    }
+
+    function throttle(fn, delay) {
+        let lastCall = 0;
+
+        return function(...args) {
+            const now = Date.now();
+
+            if (now - lastCall < delay) {
+                return;
+            }
+
+            lastCall = now;
+            fn.apply(this, args);
+        };
+    }
+
+    changeHeightBar();
+    mobileSlider('.swiper-container');
+    resizeCard('.swiper-wrapper');
+
+    window.addEventListener('optimizedResize', debounce(() => {
+        mobileSlider('.swiper-container');
+        changeHeightBar();
+    }, 150));
+
+    window.addEventListener('optimizedResize', throttle(() => {
+        resizeCard('.swiper-wrapper');
+    }, 150));
+}
+
+Resize();
+    function Observer() {
     const mobileMenu = document.querySelector('.mobile__menu');
     const navigationLinks = document.querySelectorAll('.navigation__link');
-    let sections = document.querySelectorAll('.section')
+    const childrens = document.querySelectorAll('.auto-height');
 
-    const observerOptions = {
-        root: null,
-        threshold: 0.5
+    let sections = document.querySelectorAll('.section');
+
+    function changeHeight(target, alterations, observer) {
+        resizeCard(target);
     }
 
     function changeNavigation(entries, observer) {
@@ -312,104 +445,43 @@ function Observer() {
         })
     }
 
-    const observer = new IntersectionObserver(changeNavigation,observerOptions);
-    sections.forEach((target) => observer.observe(target));
+    function sectionsObserver(selector, func, settings) {
+        const observer = new IntersectionObserver(func, settings);
+
+        selector.length > 0
+            ? selector.forEach((target) => observer.observe(target))
+            : observer.observe(selector);
+    }
+    sectionsObserver(sections, changeNavigation, {
+        root: null,
+        threshold: 0.5
+    })
+
+    function observerElementDOM(selection, func, status) {
+        const target = document.querySelector(selection);
+        const observer =  new MutationObserver((alterations, observer) => (
+            func(target, alterations, observer)))
+
+        const settings = status ?
+            {
+                childList: true,
+                subtree: true,
+                characterDataOldValue: true
+            }
+            :
+            {
+                childList: true,
+                subtree: false,
+                characterDataOldValue: false
+            }
+
+        observer.observe(target, settings);
+    }
+    observerElementDOM('.swiper-wrapper', changeHeight, true);
 }
 
 Observer();
-
-import Swiper, { Navigation, Pagination } from 'swiper';
-Swiper.use([Navigation, Pagination]);
-
-function Slider() {
-    const settings = {
-        breakpoints: {
-
-            320: {
-                autoHeight: true,
-                spaceBetween: 10,
-                slidesPerColumn: 1,
-                slidesPerView: 1,
-            },
-
-            768: {
-                autoHeight: true,
-                spaceBetween: 10,
-                slidesPerColumn: 1,
-                slidesPerView: 2,
-            },
-
-            992: {
-                autoHeight: false,
-                spaceBetween: 30,
-                slidesPerView: 2,
-                slidesPerColumn: 2,
-            },
-        }
-    }
-
-    // init Swiper:
-    new Swiper('.swiper-container', settings);
-}
-Slider();
-
-
-
-const nav = document.querySelector('.expoforum__navigation');
-let bar = document.querySelector('.expoforum__bar');
-
-(function() {
-    const throttle = function(type, name, obj) {
-        obj = obj || window;
-        let running = false;
-        const func = function() {
-            if (running) { return; }
-            running = true;
-            requestAnimationFrame(function() {
-                obj.dispatchEvent(new CustomEvent(name));
-                running = false;
-            });
-        };
-        obj.addEventListener(type, func);
-    };
-    /* init - you can init any event */
-    throttle("resize", "optimizedResize");
-})();
-
-function changeHeightBar() {
-    const heightNav = nav.offsetHeight;
-    bar = document.querySelector('.expoforum__bar');
-    if (window.innerWidth > 768) {
-        bar.setAttribute('style', `height: ${heightNav}px`);
-    }
-    else {
-        bar.setAttribute('style', `height: 100%`);
-    }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    changeHeightBar();
-
-    function debounce(fn, delay) {
-        let timerId;
-
-        return function(...args) {
-            if (timerId) {
-                clearTimeout(timerId);
-            }
-
-            timerId = setTimeout(() => {
-                fn.apply(this, args);
-                timerId = null;
-            }, delay);
-        };
-    }
-
-    window.addEventListener('optimizedResize', debounce(() => {
-        changeHeightBar();
-    }, 300));
-});
-const titleTexts = 'EXPOFORUM'.split('');
+    const titleTexts = 'EXPOFORUM'.split('');
 
 const linkLogo = document.querySelector('.link');
 for (const letter of titleTexts) {
@@ -437,12 +509,7 @@ linkLogo.addEventListener('mouseout', async () => {
     }
 
 });
-
-
-
-
-
-function Search() {
+    function Search() {
     const searchContainer = document.querySelector('.expoforum__search');
     const searchInput = document.querySelector('.expoforum__search-input');
     const searchSvg = document.querySelector('.expoforum__search-svg');
@@ -455,9 +522,7 @@ function Search() {
 }
 
 Search();
- 
-
-function Burger() {
+    function Burger() {
     const menu = document.querySelector('.mobile__menu');
     const burgerSvg = document.querySelector('.mobile__burger');
 
@@ -468,3 +533,4 @@ function Burger() {
 }
 
 Burger();
+})
